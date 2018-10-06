@@ -144,6 +144,7 @@ int bot_move(char game_board[MAXCOLS][MAXROWS]){
             if( game_board[i][col] != 'x'){
                 bot_play_temp = game_board[i][col];
                 bot_play = bot_play_temp - '0';
+                return bot_play;
             }
         }
     }
@@ -171,6 +172,7 @@ int bot_move(char game_board[MAXCOLS][MAXROWS]){
             if( game_board[row][i] != 'x'){
                 bot_play_temp = game_board[row][i];
                 bot_play = bot_play_temp - '0';
+                return bot_play;
             }
         }
     }
@@ -189,6 +191,7 @@ int bot_move(char game_board[MAXCOLS][MAXROWS]){
         if( (game_board[1][1] == game_board[2][2] && game_board[1][1] == 'x') ){
             bot_play_temp = game_board[0][0];
             bot_play = bot_play_temp - '0';
+            return bot_play;
         }
     }
 
