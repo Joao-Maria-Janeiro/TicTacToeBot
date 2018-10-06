@@ -64,46 +64,49 @@ void board_display(char game_board[MAXCOLS][MAXROWS]){
 
 int win_game(char game_board[MAXCOLS][MAXROWS]){
     int reps = 0;
-    //Player Victory
+
    for(int i = 0; i < MAXCOLS; i++){
-        if( game_board[i][0] == game_board[i][1] && game_board[i][0] == game_board[i][2] && game_board[i][0] == 'x'){
-            return 1;
+        if( game_board[i][0] == game_board[i][1] && game_board[i][0] == game_board[i][2]){
+            if(game_board[i][0] == 'x'){
+                //player wins
+                return 1;
+            }else(game_board[i][0] == 'o'){
+                //Bot wins
+                return 2;
+            }
         }
     }
 
     for(int i = 0; i < MAXROWS; i++){
-        if( game_board[0][i] == game_board[1][i] && game_board[0][i] == game_board[2][i] && game_board[0][i] == 'x'){
+        if( game_board[0][i] == game_board[1][i] && game_board[0][i] == game_board[2][i]){
+              if(game_board[0][i] == 'x'){
+                //player wins
+                return 1;
+            }else(game_board[0][i] == 'o'){
+                //Bot wins
+                return 2;
+            }
+        }
+    }
+
+    if( game_board[0][0] == game_board[1][1] && game_board[1][1] == game_board[2][2]){
+        if(game_board[0][0] == 'x'){
+            //player wins
             return 1;
-        }
-    }
-
-    if( game_board[0][0] == game_board[1][1] && game_board[1][1] == game_board[2][2] && game_board[0][0] == 'x'){
-        return 1;
-    }
-
-    if( game_board[0][2] == game_board[1][1] && game_board[1][1] == game_board[2][0] && game_board[2][0] == 'x'){
-        return 1;
-    }
-
-    //Bot Victory
-    for(int i = 0; i < MAXCOLS; i++){
-        if( game_board[i][0] == game_board[i][1] && game_board[i][0] == game_board[i][2] && game_board[i][0] == 'o'){
+        }else(game_board[0][0] == 'o'){
+            //Bot wins
             return 2;
         }
     }
 
-    for(int i = 0; i < MAXROWS; i++){
-        if( game_board[0][i] == game_board[1][i] && game_board[0][i] == game_board[2][i] && game_board[0][i] == 'o'){
+    if( game_board[0][2] == game_board[1][1] && game_board[1][1] == game_board[2][0]){
+        if(game_board[2][0] == 'x'){
+            //player wins
+            return 1;
+        }else(game_board[2][0] == 'o'){
+            //Bot wins
             return 2;
         }
-    }
-
-    if( game_board[0][0] == game_board[1][1] && game_board[1][1] == game_board[2][2] && game_board[0][0] == 'o'){
-        return 2;
-    }
-
-    if( game_board[0][2] == game_board[1][1] && game_board[1][1] == game_board[2][0] && game_board[2][0] == 'o'){
-        return 2;
     }
 
     return -1;
